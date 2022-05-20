@@ -24,21 +24,6 @@
       "productName": "Cadeira",
       "productPrice": "200",
       "id": 5
-    },
-    {
-      "productName": "Cabra",
-      "productPrice": "500",
-      "id": 6
-    },
-    {
-      "productName": "Capa de Chuva",
-      "productPrice": "25",
-      "id": 7
-    },
-    {
-      "productName": "Capa de Chuva",
-      "productPrice": "25",
-      "id": 8
     }
   ]
 }

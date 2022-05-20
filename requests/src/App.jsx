@@ -4,7 +4,7 @@ import { useFetch } from './hooks/useFetch';
 
 import './App.css';
 
-const url = 'http://localhost:5500/products';
+const url = 'http://localhost:5500/products/';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -13,7 +13,7 @@ function App() {
   const [productPrice, setProductPrice] = useState('');
 
   // fetching products
-  const { data: items, httpConfig } = useFetch(url);
+  const { data: items, httpConfig, isSendingProduct, error } = useFetch(url);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -57,11 +57,15 @@ function App() {
     <div className="App">
       <h2>Products List</h2>
 
-      <ul>
-        {items && items.map(({ id, productName, productPrice }) => (
-          <li key={id}>{productName} - {productPrice}</li>
-        ))}
-      </ul>
+      { isSendingProduct && <p>Loading...</p> }
+      { error && <p>{error}</p> }
+      { !error && (
+        <ul>
+          {items && items.map(({ id, productName, productPrice }) => (
+            <li key={id}>{productName} - {productPrice}</li>
+          ))}
+        </ul>
+      )}
 
       <div className="add-product">
         <form onSubmit={handleSubmit}>
@@ -85,7 +89,12 @@ function App() {
             />
           </label>
 
-          <button type="submit">Enviar</button>
+          <button
+            type="submit"
+            disabled={ isSendingProduct }
+          >
+            Enviar
+          </button>
         </form>
       </div>
     </div>

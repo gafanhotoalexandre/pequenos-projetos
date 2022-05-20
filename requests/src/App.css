@@ -53,6 +53,10 @@ form input {
   height: 40px;
 }
 
+.center {
+  margin: 50px auto;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
