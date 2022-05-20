@@ -51,7 +51,9 @@ function App() {
     setProductPrice('');
   }
 
-
+  function handleRemove(id) {
+    httpConfig(id, 'DELETE');
+  }
 
   return (
     <div className="App">
@@ -62,7 +64,15 @@ function App() {
       { !error && (
         <ul>
           {items && items.map(({ id, productName, productPrice }) => (
-            <li key={id}>{productName} - {productPrice}</li>
+            <li key={id}>
+              {productName} - {productPrice}
+              <button
+                type="button"
+                onClick={() => handleRemove(id)}
+              >
+                Excluir
+              </button>
+            </li>
           ))}
         </ul>
       )}

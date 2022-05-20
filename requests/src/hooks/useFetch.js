@@ -14,6 +14,9 @@ export function useFetch(url) {
   // handling errors
   const [error, setError] = useState(null);
 
+  // deleting data
+  const [itemId, setItemId] = useState(null);
+
   // GET
   useEffect(() => {
     async function fetchData() {
@@ -45,6 +48,16 @@ export function useFetch(url) {
         body: JSON.stringify(data)
       });
       setMethod(method);
+    } else if (method === 'DELETE') {
+      setConfig({
+        method,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+      });
+
+      setMethod(method);
+      setItemId(data);
     }
   }
 
@@ -60,6 +73,13 @@ export function useFetch(url) {
 
         setCallFetch(json);
         setIsSendingProduct(false);
+      } else if (method === 'DELETE') {
+        const deleteUrl = `${url}/${itemId}`;
+
+        const res = await fetch(deleteUrl, config);
+        const json = await res.json();
+
+        setCallFetch(json);
       }
     }
     request();

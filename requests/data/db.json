@@ -1,29 +1,9 @@
 {
   "products": [
     {
-      "id": 1,
-      "productName": "Camisa",
-      "productPrice": 59.9
-    },
-    {
       "id": 2,
       "productName": "Calça vermelha",
       "productPrice": 90
-    },
-    {
-      "id": 3,
-      "productName": "Boné aba reta",
-      "productPrice": 29.9
-    },
-    {
-      "productName": "Capa de Chuva",
-      "productPrice": "50",
-      "id": 4
-    },
-    {
-      "productName": "Cadeira",
-      "productPrice": "200",
-      "id": 5
     }
   ]
 }
