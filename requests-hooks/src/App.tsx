@@ -10,7 +10,11 @@ function App() {
   const [loadingMovies, setLoadingMovies] = useState(false);
 
   useEffect(() => {
-    async function loadMovies() {
+    loadMovies();
+  }, []);
+
+  async function loadMovies() {
+    try {
       setLoadingMovies(true);
 
       const res = await fetch(URL);
@@ -18,14 +22,10 @@ function App() {
 
       setLoadingMovies(false);
       setMoviesInTheaters(data);
+    } catch (err) {
+      setLoadingMovies(false);
+      setMoviesInTheaters([]);
     }
-    loadMovies();
-  }, []);
-
-  function handleLoadMovies() {
-    fetch(URL)
-      .then(response => response.json())
-      .then(data => setMoviesInTheaters(data));
   }
 
   return (
@@ -52,6 +52,14 @@ function App() {
             </div>
           )) }
       </div>
+
+      { !loadingMovies && moviesInTheaters.length === 0 &&
+        <p
+          className="text-center leading-2"
+        >
+          Ocorreu um erro. Tente novamente mais tarde.
+        </p>
+      }
     </div>
   );
 }
