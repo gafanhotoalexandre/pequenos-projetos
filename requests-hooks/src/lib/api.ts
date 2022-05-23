@@ -1,10 +1,14 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://jsonplaceholder.typicode.com';
+// const BASE_URL = 'https://jsonplaceholder.typicode.com';
+
+const http = axios.create({
+  baseURL: 'https://jsonplaceholder.typicode.com'
+});
 
 export const api = {
   async all() {
-    const response = await axios.get(`${BASE_URL}/todos`);
+    const response = await http.get('/todos');
     return response.data;
     /*
     const res = await fetch(`${BASE_URL}/todos`);
@@ -13,7 +17,7 @@ export const api = {
     */
   },
   async create(title: string, body: string, userId: number) {
-    const response = await axios.post(`${BASE_URL}/todos`, {
+    const response = await http.post('/todos', {
       title, body, userId
     });
     return response.data;
