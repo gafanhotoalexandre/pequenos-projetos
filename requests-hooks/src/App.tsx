@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { PostForm } from './components/PostForm';
 import { PostItem } from './components/PostItem';
 import { Post } from './types/Post';
-
-const URL = 'https://jsonplaceholder.typicode.com/todos';
+import { api } from './lib/api';
 
 export default function App() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -18,10 +17,7 @@ export default function App() {
   async function loadPosts() {
     try {
       setLoading(true);
-
-      const res = await fetch(URL);
-      const data = await res.json();
-
+      const data = await api.all();
       setLoading(false);
       setPosts(data);
     } catch (err) {
@@ -32,19 +28,12 @@ export default function App() {
   }
 
   async function handleAddPost(title: string, body: string) {
-    const res = await fetch(URL, {
-      method: 'POST',
-      body: JSON.stringify({ title, body, userId: 1 }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await res.json();
-
+    const data = await api.create(title, body, 1);
     if (data.id) {
       alert('Post adicionado com sucesso!' + data.id);
+    } else {
+      alert('Ocorreu um erro.');
     }
-
   }
 
   return (
