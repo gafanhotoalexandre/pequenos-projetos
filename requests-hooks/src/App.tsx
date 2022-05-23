@@ -1,5 +1,8 @@
 import { CircleNotch } from 'phosphor-react';
 import { useState, useEffect } from 'react';
+
+import { PostForm } from './components/PostForm';
+import { PostItem } from './components/PostItem';
 import { Post } from './types/Post';
 
 const URL = 'https://jsonplaceholder.typicode.com/todos';
@@ -7,9 +10,6 @@ const URL = 'https://jsonplaceholder.typicode.com/todos';
 export default function App() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
-
-  const [addTitleText, setAddTitleText] = useState('');
-  const [addBodyText, setAddBodyText] = useState('');
 
   useEffect(() => {
     loadPosts();
@@ -31,19 +31,10 @@ export default function App() {
     }
   }
 
-  async function handleAddPost() {
-    if (!(addTitleText && addBodyText)) {
-      alert('Preencha os dados corretamente.');
-      return;
-    }
-
+  async function handleAddPost(title: string, body: string) {
     const res = await fetch(URL, {
       method: 'POST',
-      body: JSON.stringify({
-        title: addTitleText,
-        body: addBodyText,
-        userId: 1,
-      }),
+      body: JSON.stringify({ title, body, userId: 1 }),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -51,8 +42,9 @@ export default function App() {
     const data = await res.json();
 
     if (data.id) {
-      alert('Post adicionado com sucesso!');
+      alert('Post adicionado com sucesso!' + data.id);
     }
+
   }
 
   return (
@@ -63,44 +55,17 @@ export default function App() {
         </div>
       }
 
-      <fieldset className="border-2 mb-3 p-3">
-        <legend className="px-2">Adicionar Novo Post</legend>
-
-        <input
-          type="text"
-          className="block mb-2 rounded border"
-          placeholder="Digite um título"
-          onChange={(e) => setAddTitleText(e.target.value)}
-          value={addTitleText}
-        />
-
-        <textarea
-          className="block mb-2 rounded border"
-          placeholder="Digite o corpo da mensagem"
-          onChange={(e) => setAddBodyText(e.target.value)}
-          value={addBodyText}
-        />
-
-        <button
-          className="border rounded mb-2 py-3 px-4 text-white bg-blue-500 hover:bg-blue-400 transition"
-          onClick={handleAddPost}
-        >
-          Adicionar
-        </button>
-      </fieldset>
-
+      <PostForm
+        onAdd={handleAddPost}
+      />
 
       { !loading && posts.length > 0 &&
         <div className="">
-          { posts.map(({ id, userId, title, body }) => (
-            <div
-              key={id}
-              className="mb-4"
-            >
-              <h4 className="font-bold">{title}</h4>
-              <small>#{id} - Usuário: {userId}</small>
-              <p>{body}</p>
-            </div>
+          { posts.map((data) => (
+            <PostItem
+              key={data.id}
+              data={data}
+            />
           ))}
         </div>
       }
