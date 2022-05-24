@@ -1,3 +1,12 @@
+export default function App() {
+  return (
+    <div className="p-5">
+      ...
+    </div>
+  );
+}
+
+/*
 import { useCounter } from './hooks/useCounter';
 
 export default function App() {
@@ -30,3 +39,4 @@ export default function App() {
     </div>
   )
 }
+*/
