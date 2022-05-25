@@ -21,12 +21,13 @@ function reducer(state: Person[], action: ActionType) {
     case 'ADD':
       if (!action.payload?.name) break;
 
+      const newState = [...state];
       // adicionando pessoa
-      state.push({
+      newState.push({
         id: uuidv4(),
         name: action.payload?.name
       });
-    break;
+      return newState;
     case 'DEL':
       if (!action.payload?.id) break;
 
