@@ -32,11 +32,10 @@ function reducer(state: Person[], action: ActionType) {
       if (!action.payload?.id) break;
 
       // removendo pessoa
-      state = state.filter(item => item.id !== action.payload?.id);
-    break;
+      return state.filter(item => item.id !== action.payload?.id);
     case 'ORDER':
-      state = state.sort((a, b) => (a.name > b.name) ? 1 : -1);
-    break;
+      const orderState = state.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      return orderState;
   }
   return state;
 }

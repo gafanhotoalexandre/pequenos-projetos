@@ -17,6 +17,12 @@ export default function App() {
     setNameInput('');
   }
 
+  function handleOrder() {
+    peopleListDispatch({
+      type: 'ORDER',
+    });
+  }
+
   return (
     <div className="p-5">
       <input
@@ -29,10 +35,25 @@ export default function App() {
         onClick={handleAddButton}
       >Adicionar</button>
 
+      <button
+        onClick={handleOrder}
+      >Ordenar</button>
+
       <p className="leading-1">Lista de Pessoas:</p>
       <ul>
         { peopleList.map((item, index) => (
-          <li key={index}>{item.name}</li>
+          <li key={index}>
+            {item.name}
+            <button
+              onClick={() => peopleListDispatch({
+                type: 'DEL',
+                payload: {
+                  id: item.id
+                },
+              })}
+              className="px-3 py-2 bg-red-500 hover:bg-red-400 transition-all text-white"
+            >[ deletar ]</button>
+          </li>
         ))}
       </ul>
     </div>
