@@ -34,7 +34,8 @@ function reducer(state: Person[], action: ActionType) {
       // removendo pessoa
       return state.filter(item => item.id !== action.payload?.id);
     case 'ORDER':
-      const orderState = state.sort((a, b) => (a.name > b.name) ? 1 : -1);
+      let orderState = [...state];
+      orderState = orderState.sort((a, b) => (a.name > b.name) ? 1 : -1);
       return orderState;
   }
   return state;
