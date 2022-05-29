@@ -1,6 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
+import { AboutBonieky } from './pages/AboutBonieky';
+import { AboutAlexandre } from './pages/AboutAlexandre';
+import { NotFound } from './pages/NotFound';
 
 export default function App() {
   return (
@@ -15,6 +18,10 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/sobre" element={<About />} />
+          <Route path="/sobre/bonieky" element={<AboutBonieky />} />
+          <Route path="/sobre/alexandre" element={<AboutAlexandre />} />
+
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
