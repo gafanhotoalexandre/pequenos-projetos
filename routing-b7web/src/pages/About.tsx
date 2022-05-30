@@ -36,11 +36,11 @@ export function About() {
       Ordem: {searchParams.get('order')}
       <section className="border rounded p-4 flex items-center gap-5 transition-all">
         <button
-          className="px-3 py-2 border rounded hover:border-gray-500 transition-all"
+          className="px-3 py-2 border rounded hover:border-gray-400 transition-all"
           onClick={() => setOrder('asc')}
         >ASC</button>
         <button
-          className="px-3 py-2 border rounded hover:border-gray-500 transition-all"
+          className="px-3 py-2 border rounded hover:border-gray-400 transition-all"
           onClick={() => setOrder('desc')}
         >DESC</button>
       </section>
