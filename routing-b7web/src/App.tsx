@@ -1,4 +1,4 @@
-import { RouteList } from './RouteList';
+import { MainRoutes } from './routes/MainRoutes';
 
 export default function App() {
   return (
@@ -10,7 +10,7 @@ export default function App() {
       <hr />
 
       <main className="py-4">
-        <RouteList />
+        <MainRoutes />
       </main>
 
       <hr />

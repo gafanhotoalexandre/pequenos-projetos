@@ -1,13 +1,13 @@
 import { Routes, Route } from 'react-router-dom';
 
-import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { AboutSlug } from './pages/AboutSlug';
-import { NotFound } from './pages/NotFound';
-import { RequireAuth } from './RequireAuth';
+import { Home } from '../pages/Home';
+import { About } from '../pages/About';
+import { AboutSlug } from '../pages/AboutSlug';
+import { NotFound } from '../pages/NotFound';
+import { RequireAuth } from '../RequireAuth';
 
 
-export function RouteList() {
+export function MainRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
