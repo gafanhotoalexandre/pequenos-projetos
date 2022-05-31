@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 
 import { Home } from '../pages/Home';
 import { About } from '../pages/About';
@@ -8,24 +8,10 @@ import { RequireAuth } from '../RequireAuth';
 
 
 export function MainRoutes() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route
-            path="/sobre"
-            element={
-              <RequireAuth>
-                <About />
-              </RequireAuth>}
-          />
-
-          <Route
-            path="/sobre/:slug"
-            element={<AboutSlug />}
-          />
-
-          <Route path="*" element={<NotFound />} />
-
-    </Routes>
-  );
+  return useRoutes([
+    { path: '/', element: <Home /> },
+    { path: '/sobre', element: <RequireAuth><About /></RequireAuth> },
+    { path: '/sobre/:slug', element: <AboutSlug /> },
+    { path: '*', element: <NotFound /> },
+  ]);
 }
