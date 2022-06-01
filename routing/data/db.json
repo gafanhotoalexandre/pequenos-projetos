@@ -1,0 +1,17 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "Camisa Polo",
+      "productPrice": 40.00
+    }, {
+      "id": 2,
+      "productName": "Boné aba reta",
+      "productPrice": 19.99
+    }, {
+      "id": 3,
+      "productName": "Carregador Super Rápido",
+      "productPrice": 59.99
+    }
+  ]
+}
