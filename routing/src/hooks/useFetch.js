@@ -9,7 +9,7 @@ export function useFetch(url) {
   const [callFetch, setCallFetch] = useState(false);
 
   // Loading
-  const [isSendingProduct, setIsSendingProduct] = useState(false);
+  const [isSending, setisSending] = useState(false);
 
   // handling errors
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ export function useFetch(url) {
   // GET
   useEffect(() => {
     async function fetchData() {
-      setIsSendingProduct(true);
+      setisSending(true);
       setError('');
 
       try {
@@ -32,7 +32,7 @@ export function useFetch(url) {
         setError('Houve algum erro ao carregar os dados');
       }
 
-      setIsSendingProduct(false);
+      setisSending(false);
     }
     fetchData();
   }, [url, callFetch]);
@@ -64,7 +64,7 @@ export function useFetch(url) {
   useEffect(() => {
     async function request() {
       if (method === 'POST') {
-        setIsSendingProduct(true);
+        setisSending(true);
 
         const fetchOptions = [url, config];
 
@@ -72,7 +72,7 @@ export function useFetch(url) {
         const json = await res.json();
 
         setCallFetch(json);
-        setIsSendingProduct(false);
+        setisSending(false);
       } else if (method === 'DELETE') {
         const deleteUrl = `${url}/${itemId}`;
 
@@ -85,5 +85,5 @@ export function useFetch(url) {
     request();
   }, [config, method, url]);
 
-  return { data, httpConfig, isSendingProduct, error };
+  return { data, httpConfig, isSending, error };
 }

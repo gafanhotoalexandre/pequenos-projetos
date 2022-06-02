@@ -1,0 +1,16 @@
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 980px;
+  margin: auto;
+}
+
+.products li {
+  flex: 1;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
