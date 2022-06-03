@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import './App.css';
 
@@ -33,6 +33,7 @@ export default function App() {
 
           <Route path="/search" element={<Search />} />
 
+          <Route path="/company" element={<Navigate to="/about" />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
