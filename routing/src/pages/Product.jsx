@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 
 export function Product() {
@@ -17,6 +17,8 @@ export function Product() {
         <div>
           <h2>{ product.productName }</h2>
           <p>R${ product.productPrice }</p>
+
+          <Link to={`/products/${product.id}/info`}>Read more</Link>
         </div>
       )}
     </section>
