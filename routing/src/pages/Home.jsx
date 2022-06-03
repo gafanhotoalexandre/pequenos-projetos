@@ -18,6 +18,8 @@ export function Home() {
           <li key={item.id}>
             <h2>{ item.productName }</h2>
             <p>R${ item.productPrice }</p>
+
+            <Link to={`/products/${item.id}`}>Details</Link>
           </li>
         ))}
       </ul>
