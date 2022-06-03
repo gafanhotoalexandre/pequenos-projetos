@@ -13,6 +13,8 @@ export function Home() {
       <h1>Products</h1>
       { error && <p>{ error }</p> }
 
+      { isSending && <p>loading...</p> }
+
       <ul className="products">
         {items && items.map(item => (
           <li key={item.id}>
