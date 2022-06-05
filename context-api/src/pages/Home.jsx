@@ -12,11 +12,11 @@ export function Home() {
   const { counter } = useCounterContext();
 
   // complex
-  // ...
+  const { color } = useTitleColorContext();
 
   return (
     <div>
-      <h1>Homepage</h1>
+      <h1 style={{ color: color }}>Homepage</h1>
 
       {counter}
 
