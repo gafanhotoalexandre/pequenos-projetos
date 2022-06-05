@@ -1,9 +1,7 @@
-import { useContext } from 'react'
-
-import { CounterContext } from '../context/CounterContext';
+import { useCounterContext } from '../hooks/useCounterContext';
 
 export function ChangeCounter() {
-  const {counter, setCounter} = useContext(CounterContext);
+  const {counter, setCounter} = useCounterContext();
 
   return (
     <div style={{ margin: '15px 0' }}>
