@@ -1,5 +1,6 @@
 // components
 import { ChangeCounter } from '../components/ChangeCounter';
+import { ChangeTitleColorButton } from '../components/ChangeTitleColorButton';
 
 // simple
 import { useCounterContext } from '../hooks/useCounterContext';
@@ -21,6 +22,9 @@ export function Home() {
       {counter}
 
       <ChangeCounter />
+
+      {/* Change Context Area */}
+      <ChangeTitleColorButton />
     </div>
   );
 }
